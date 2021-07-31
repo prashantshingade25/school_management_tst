@@ -1,0 +1,63 @@
+<!-- Demo content -->
+<div class="row">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex">
+                    <h4 class="mr-auto">Class List</h4>
+                    <a href="<?=ROOT_URL?>student/class/create.php" class="btn btn-outline-secondary" style="height: 10%;">Create New Class</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Class Name</th>
+                            <th scope="col">Created By</th>
+                            <th scope="col">Created Date</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            if(count($class_data) > 0){
+                                $counter = 1;
+                                for($i=0;$i<count($class_data);$i++){
+                        ?>
+                            <tr>
+                                <th scope="row">
+                                    <?=$counter++?>
+                                </th>
+                                <td>
+                                    <?=$class_data[$i]['class_name']?>
+                                </td>
+                                <td>
+                                    Admin
+                                </td>
+                                <td>
+                                    <?=date("d M Y h:s:i A", strtotime($class_data[$i]['createdAt']))?>
+                                </td>
+                                <th scope="row">
+                                    <a href="#">Edit</a> || <a href="javascript:void(0)" class="trash-class" rel="<?=$class_data[$i]['id']?>">Delete</a>
+                                </th>
+                            </tr>
+                            <?php
+                                }
+                            }else{
+                        ?>
+                                <tr>
+                                    <td colspan="5">
+                                        No Records Found !
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+
+#class
+    Id (Int)
+    ClassName (varchar)
+    CreatedBy (tinyInt)
+    CreatedAt (timestamp)
+
+#subjects
+    Id (Int)
+    classId (tinyInt)
+    SubjectName (varchar)
+    Description (text)
+    PassingMarks (Int)
+    OutOfMarks (Int)
+    CreatedBy (tinyInt)
+    CreatedAt (timestamp)
+
+#students
+    Id (Int)
+    classId (tinyInt)
+    FirstName (varchar)
+    Middlename (varchar)
+    LastName (varchar)
+    MobileNo (varchar)
+    CreatedBy (tinyInt)
+    CreatedAt (timestamp)
+    
+#student_report
+    Id (Int)
+    studentId (tinyInt)
+    marks (json)
+    CreatedBy (tinyInt)
+    CreatedAt (timestamp)
+
+#users
+    Id (Int)
+    Username (varchar)
+    password (varchar)
+    user_type (varchar)
+    status (tinyInt)
+    CreatedBy (tinyInt)
+    CreatedAt (timestamp)

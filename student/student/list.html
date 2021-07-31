@@ -1,0 +1,71 @@
+<!-- Demo content -->
+<div class="row">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex">
+                    <h4 class="mr-auto">Student List</h4>
+                    <a href="<?=ROOT_URL?>student/student/create.php" class="btn btn-outline-secondary" style="height: 10%;">Add New Student</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Student Name</th>
+                            <th scope="col">Mobile No</th>
+                            <th scope="col">Created By</th>
+                            <th scope="col">Created Date</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            if(count($student_data) > 0){
+                                $counter = 1;
+                                for($i=0;$i<count($student_data);$i++){
+                        ?>
+                            <tr>
+                                <th scope="row">
+                                    <?=$counter++?>
+                                </th>
+                                <td>
+                                    <?=$student_data[$i]['first_name']?>
+                                        <?=$student_data[$i]['middle_name']?>
+                                            <?=$student_data[$i]['last_name']?>
+                                </td>
+                                <td>
+                                    <?=$student_data[$i]['mobile_no']?>
+                                </td>
+                                <td>
+                                    Admin
+                                </td>
+                                <td>
+                                    <?=date("d M Y h:s:i A", strtotime($student_data[$i]['createdAt']))?>
+                                </td>
+                                <th scope="row">
+                                    <a href="<?=ROOT_URL?>student/student/edit.php?id=<?">Edit</a> ||
+                                    <a href="javascript:void(0)" class="trash-student" rel="<?=$student_data[$i]['id']?>">Delete</a> ||
+                                    <a href="<?=ROOT_URL?>student/student/marks.php?id=<?=$student_data[$i]['id']?>">Marks</a>
+                                </th>
+                            </tr>
+                            <?php
+                                }
+                            }else{
+                        ?>
+                                <tr>
+                                    <td colspan="6">
+                                        No Records Found !
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
